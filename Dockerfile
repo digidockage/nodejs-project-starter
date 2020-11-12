@@ -6,3 +6,5 @@ WORKDIR /usr/src/app
 
 ARG PORT
 EXPOSE $PORT
+
+CMD ["nodemon"]
