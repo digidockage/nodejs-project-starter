@@ -7,4 +7,6 @@ WORKDIR /usr/src/app
 ARG PORT
 EXPOSE $PORT
 
-CMD ["nodemon"]
+ARG NODEMON
+
+CMD ["nodemon $NODEMON"]
