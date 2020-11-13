@@ -9,4 +9,4 @@ EXPOSE $PORT
 
 ARG NODEMON
 
-CMD ["nodemon $NODEMON"]
+CMD nodemon $NODEMON
