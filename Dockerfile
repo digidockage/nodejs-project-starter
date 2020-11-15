@@ -1,12 +1,19 @@
 FROM node:lts-alpine
 
-RUN npm install -g nodemon
-
+# Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-ARG PORT
-EXPOSE $PORT
+RUN npm install -g nodemon
 
-ARG NODEMON
+# Install app dependencies
+COPY package.json /usr/src/app/package.json
+RUN npm --only=production install && npm ls
+RUN mv /usr/src/app/node_modules /node_modules
 
-CMD nodemon $NODEMON
+# Bundle app source
+COPY . /usr/src/app
+
+EXPOSE 3000
+
+CMD node .
